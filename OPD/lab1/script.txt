@@ -1,0 +1,122 @@
+#!/bin/bash
+mkdir lab0
+cd lab0
+mkdir garbodor4
+touch pawniard1
+mkdir simisear3
+touch sunkern0
+mkdir surskit5
+touch vanilluxe2
+cd garbodor4
+mkdir raticate
+mkdir zebstrika
+mkdir ludicolo
+touch sudowoodo
+cd .. 
+cd simisear3 
+mkdir metapod
+mkdir pawniard
+mkdir misdreavus
+touch vulpix 
+touch sawsbuck
+touch cascoon 
+cd .. 
+cd surskit5 
+mkdir politoed 
+touch staryu 
+mkdir pineco 
+touch vullaby 
+touch krookodile 
+cd .. 
+cat > garbodor4/sudowoodo << EOF
+Способности  Flail Low Kick Rock Throw Mimic Slam Faint
+Attack Rock Tomb Block Rock Slide Counter Sucker Punch Double-Edge
+Stone Edge Hammer Arm
+EOF
+cat > pawniard1 << EOF
+Развитые способности
+Pressure
+EOF
+cat > simisear3/vulpix << EOF
+Тип покемона  FIRE NONE 
+EOF
+cat > simisear3/sawsbuck << EOF
+Тип диеты 
+Herbivore 
+EOF
+cat > simisear3/cascoon << EOF
+Живет  Forest Rainforest
+EOF
+cat > sunkern0 << EOF
+Тип покемона 
+GRASS NONE 
+EOF
+cat > surskit5/staryu << EOF
+Возможности  Overland=1 Surface=5 Underwater=5
+Sky=5 Jump=2 Power=2 Intelligence=4 Fountain=0
+Gilled=0
+EOF
+cat > surskit5/vullaby << EOF
+Возможности  Overland=3 Surface=1 Sky=6 Jump=3
+Power1=0 Intelligence=4 Guster=0
+EOF
+cat > surskit5/krookodile << EOF
+Возможности  Overland=8
+Surface=6 Burrow=8 Jump=3 Power=4 Intelligence=4 Stealth=0
+Groundshaper=0 
+EOF
+cat > vanilluxe2 << EOF
+Ходы  Icy Wind Iron Defense Magic Coat 
+Magnet Rise Signal Beam Sleep Talk Snore Uproar Weather Ball‡
+EOF
+
+chmod u=wx garbodor4/raticate
+chmod g=wx garbodor4/raticate
+chmod o=rx garbodor4/raticate
+chmod 312 garbodor4/zebstrika
+chmod 751 garbodor4/ludicolo
+chmod u-rwx garbodor4/sudowoodo
+chmod g=rw garbodor4/sudowoodo
+chmod o-rwx garbodor4/sudowoodo
+chmod 335 garbodor4
+chmod 400 pawniard1 
+chmod 537 simisear3/metapod
+chmod 753 simisear3/pawniard
+chmod 511 simisear3/misdreavus
+chmod 004 simisear3/vulpix
+chmod 620 simisear3/sawsbuck
+chmod 400 simisear3/cascoon
+chmod 307 simisear3 
+chmod 620 sunkern0
+chmod 576 surskit5/politoed
+chmod 444 surskit5/staryu
+chmod 500 surskit5/pineco
+chmod 400 surskit5/vullaby
+chmod 550 surskit5
+chmod 440 vanilluxe2
+
+ln /home/studs/s413052/lab0/pawniard1 sawsbuckpawniard
+mv sawsbuckpawniard simisear3
+ln -s /home/studs/s413052/lab0/sunkern0 sudowoodosunkern
+mv sudowoodosunkern garbodor4/
+#тк нельзя скопировать файл sunkern0 из за прав доступа
+chmod 777 simisear3 
+chmod 777 simisear3/misdreavus 
+cp sunkern0 simisear3/misdreavus
+chmod 511 simisear3/misdreavus
+chmod 307 simisear3 
+chmod 777 garbodor4/raticate
+cp -r surskit5 garbodor4/raticate
+chmod 335 garbodor4/raticate
+cat simisear3/sawsbuck simisear3/cascoon >> pawniard1_70
+ln -s /home/studs/s413052/lab0/surskit5 Copy_73
+cp vanilluxe2 simisear3/vulpixvanilluxe
+
+
+mkdir tmp 
+cat **/**/*e | wc -l > lab0/tmp/qwerty1 | 2>&1 
+touch mistakes3
+ls -lSR lab0 2>/tmp/mistakes3 | head -6
+touch mistakes4
+cat ./**/*d | sort | cat -n
+cat garbodor4/sudowoodo simisear3/vulpix simisear3/cascoon surskit5/staryu surskit5/vullaby | sort
