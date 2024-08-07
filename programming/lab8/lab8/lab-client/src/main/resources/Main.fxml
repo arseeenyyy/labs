@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="590.0" prefWidth="1081.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arseeenyyy.github.client.controllers.MainController">
+    <children>
+        <TabPane fx:id="tabPane" prefHeight="590.0" prefWidth="1081.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="%main_page">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <MenuBar>
+                                    <menus>
+                                        <Menu fx:id="menu" mnemonicParsing="false" text="%commands">
+                                            <items>
+                                                <MenuItem fx:id="addCommand" mnemonicParsing="false" onAction="#handleAddCommand" text="%add" />
+                                                <MenuItem fx:id="addIfMaxCommand" mnemonicParsing="false" onAction="#handleAddIfMaxCommand" text="%add_if_max" />
+                                                <MenuItem fx:id="clearCommand" mnemonicParsing="false" onAction="#handleClearCommand" text="%clear" />
+                                                <MenuItem fx:id="infoCommand" mnemonicParsing="false" onAction="#handleInfoCommand" text="%info" />
+                                                <MenuItem fx:id="historyCommand" mnemonicParsing="false" onAction="#handleHistoryCommand" text="%history" />
+                                                <MenuItem fx:id="removeLastCommand" mnemonicParsing="false" onAction="#handleRemoveLastCommand" text="%remove_last" />
+                                                <MenuItem fx:id="removeByIdCommand" mnemonicParsing="false" onAction="#handleRemoveByIdCommand" text="%remove_by_id" />
+                                                <MenuItem fx:id="updateCommand" mnemonicParsing="false" onAction="#handleUpdateCommand" text="%update" />
+                                                <MenuItem fx:id="removeAnyByWingspanCommand" mnemonicParsing="false" onAction="#handleRemoveAnyByWingspanCommand" text="%remove_any_by_wingspan" />
+                                                <MenuItem fx:id="helpCommand" mnemonicParsing="false" onAction="#handleHelpCommand" text="%help" />
+                                            </items>
+                                        </Menu>
+                                    </menus>
+                                </MenuBar>
+                                <Button fx:id="exitButton" layoutX="920.0" layoutY="518.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="27.0" prefWidth="148.0" text="%exit" />
+                                <TableView fx:id="tableView" layoutX="33.0" layoutY="86.0" prefHeight="277.0" prefWidth="1015.0" style="-fx-background-color: f0f8ff;">
+                                    <columns>
+                                        <TableColumn fx:id="idColumn" prefWidth="75.0" text="%id" />
+                                        <TableColumn fx:id="nameColumn" prefWidth="75.0" text="%name" />
+                                        <TableColumn prefWidth="75.0" text="%coordinate_x" fx:id="xColumn" />
+                                        <TableColumn fx:id="yColumn" prefWidth="75.0" text="%coordinate_y" />
+                                        <TableColumn fx:id="dateColumn" prefWidth="161.0" text="%creation_date" />
+                                        <TableColumn fx:id="ageColumn" prefWidth="57.0" text="%age" />
+                                        <TableColumn fx:id="descriptionColumn" prefWidth="194.0" text="%description" />
+                                        <TableColumn fx:id="wingspanColumn" prefWidth="78.0" text="%wingspan" />
+                                        <TableColumn fx:id="colorColumn" prefWidth="85.0" text="%color" />
+                                        <TableColumn fx:id="caveColumn" prefWidth="139.0" text="%number_of_treasures" />
+                                    </columns>
+                                </TableView>
+                                <ImageView fx:id="imageView" fitHeight="42.0" fitWidth="67.0" layoutX="33.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@img.png" />
+                                    </image>
+                                </ImageView>
+                                <TextArea fx:id="responseTextArea" editable="false" layoutX="33.0" layoutY="382.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="175.0" prefWidth="482.0" promptText="%server_response" />
+                                <Label fx:id="loginField" alignment="CENTER" layoutX="861.0" layoutY="38.0" prefHeight="38.0" prefWidth="180.0" />
+                                <Button fx:id="UAbutton" layoutX="1015.0" layoutY="382.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="52.0" text="UA" />
+                                <Button fx:id="ESbutton" layoutX="1015.0" layoutY="427.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="52.0" text="ES" />
+                                <Button fx:id="RUbutton" layoutX="963.0" layoutY="382.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="52.0" text="RU" />
+                                <Button fx:id="CZbutton" layoutX="963.0" layoutY="427.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="52.0" text="CZ" />
+<!--                                <Button fx:id="logoutButton" layoutX="920.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="27.0" prefWidth="148.0" text="%log_out" />-->
+                                <Button fx:id="scriptButton" layoutX="108.0" mnemonicParsing="false" onAction="#handleScriptButton" prefHeight="27.0" prefWidth="118.0" text="%ScriptExecutor" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="%visualization">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Pane layoutX="25.0" layoutY="14.0" prefHeight="372.0" prefWidth="1031.0" style="-fx-background-color: f0f8ff;">
+                                    <children>
+                                        <Canvas fx:id="canvas" height="372.0" width="1031.0" />
+                                    </children>
+                                </Pane>
+                                <TextArea fx:id="dragonInfo" editable="false" layoutX="14.0" layoutY="399.0" prefHeight="145.0" prefWidth="510.0" promptText="%info_about_dragon" />
+                                <Label alignment="TOP_LEFT" layoutX="545.0" layoutY="399.0" prefHeight="145.0" prefWidth="510.0" style="-fx-background-color: white;" text="left_mouse_click_info&#10;right_mouse_click&#10;purple_yours&#10;red_others" />
+                                <Separator layoutX="538.0" layoutY="385.0" orientation="VERTICAL" prefHeight="172.0" prefWidth="7.0" />
+                                <Separator layoutY="391.0" prefHeight="7.0" prefWidth="1081.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

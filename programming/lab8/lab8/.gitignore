@@ -1,0 +1,9 @@
+/target/
+/lab-client/target/
+/lab-common/target/
+/lab-server/target/
+*.iml
+.idea
+*.jar
+/lab-server/src/main/java/com/arseeenyyy/github/server/db/db.cfg
+/lab-server/src/main/java/com/arseeenyyy/github/server/db/script.sql

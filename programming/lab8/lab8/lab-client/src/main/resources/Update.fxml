@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arseeenyyy.github.client.controllers.UpdateController">
+    <children>
+        <Label fx:id="updateLabel" layoutX="119.0" layoutY="14.0" prefHeight="26.0" prefWidth="62.0" text="%update" />
+        <MenuButton fx:id="idChoiceField" layoutX="64.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="172.0" text="%id" textAlignment="CENTER"/>
+        <TextField fx:id="nameField" layoutX="64.0" layoutY="105.0" prefHeight="26.0" prefWidth="172.0" promptText="%name" />
+        <TextField fx:id="xField" layoutX="64.0" layoutY="138.0" prefHeight="26.0" prefWidth="172.0" promptText="%coordinate_x" />
+        <TextField fx:id="yField" layoutX="64.0" layoutY="171.0" prefHeight="26.0" prefWidth="172.0" promptText="%coordinate_y" />
+        <TextField fx:id="ageField" layoutX="64.0" layoutY="205.0" prefHeight="26.0" prefWidth="172.0" promptText="%age" />
+        <TextField fx:id="descriptionField" layoutX="64.0" layoutY="238.0" prefHeight="26.0" prefWidth="172.0" promptText="%description" />
+        <TextField fx:id="wingspanField" layoutX="64.0" layoutY="272.0" prefHeight="26.0" prefWidth="172.0" promptText="%wingspan" />
+        <MenuButton fx:id="colorField" layoutX="64.0" layoutY="309.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="172.0" text="%color">
+            <items>
+                <MenuItem mnemonicParsing="false" text="YELLOW" />
+                <MenuItem mnemonicParsing="false" text="BROWN" />
+                <MenuItem mnemonicParsing="false" text="GREEN" />
+                <MenuItem mnemonicParsing="false" text="BLUE" />
+            </items>
+        </MenuButton>
+        <TextField fx:id="caveField" layoutX="64.0" layoutY="345.0" prefHeight="26.0" prefWidth="172.0" promptText="%number_of_treasures" />
+        <Button fx:id="submitButton" layoutX="124.0" layoutY="402.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="52.0" text="%OK" />
+    </children>
+</AnchorPane>

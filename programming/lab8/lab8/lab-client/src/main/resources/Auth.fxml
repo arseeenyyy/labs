@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arseeenyyy.github.client.controllers.AuthController">
+   <children>
+      <VBox alignment="CENTER" spacing="20" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+         <Label fx:id="auth" text="%authorization" textAlignment="CENTER">
+            <font>
+               <Font size="28.0" />
+            </font>
+         </Label>
+         <TextField fx:id="loginField" alignment="CENTER" maxWidth="200" promptText="%login" style="-fx-border-color: #cccccc; -fx-background-color: #ffffff;" />
+         <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="200" promptText="%password" style="-fx-border-color: #cccccc; -fx-background-color: #ffffff;" />
+         <Button fx:id="okButton" maxWidth="100" mnemonicParsing="false" style="-fx-background-color: #3399ff;" text="%OK" textFill="WHITE" />
+         <CheckBox fx:id="registerCheckBox" alignment="CENTER" mnemonicParsing="false" text="%register" textAlignment="CENTER" />
+      </VBox>
+      <TextArea fx:id="responseTextArea" editable="false" layoutX="209.0" layoutY="350.0" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #f0f0f0; -fx-border-color: transparent; -fx-text-fill: transparent;" />
+      <Button fx:id="UAbutton" layoutX="533.0" layoutY="254.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="53.0" text="UA"/>
+      <Button fx:id="RUbutton" layoutX="480.0" layoutY="254.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="53.0" text="RU"/>
+      <Button fx:id="CZbutton" layoutX="480.0" layoutY="304.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="53.0" text="CZ"/>
+      <Button fx:id="ESbutton" layoutX="533.0" layoutY="304.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="53.0" text="ES"/>
+   </children>
+</AnchorPane>

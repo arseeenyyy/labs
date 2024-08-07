@@ -1,0 +1,285 @@
+@startuml
+package utility {
+    interface Console {
+        +void println(Object o)
+        +void print(Object o)
+        +void printError(Object o)
+        +String readln()
+        +void printTable(Object o1, Object o2)
+    }
+    enum ExecutionCode {
+        OK_CODE
+        EXIT_CODE
+        ERROR_CODE
+    }
+    class StandartConsole {
+        -{static} Scanner scanner
+        +void println(Object o)
+        +void print(Object o)
+        +void printError(Object o)
+        +String readln()
+        +void printTable(Object o1, Object o2)
+    }
+    class Runner {
+        -Console console
+        +CommandManager commandManager
+        -Stack<File> scriptStack
+        +Runner(Console console, CommandManager commandManager)
+        +void interactiveMode()
+    }
+}
+Console <|.. StandartConsole
+package models {
+    package parseConf {
+        class XmlReader {
+            +{static} void readCollection(Console console)
+        }
+        class XmlWriter {
+            +{static} void writeCollection(Console console)
+        }
+    }
+    package validateInput {
+        class AgeValidator {
+            +{static} long validateAge(Console console)
+        }
+        class ColorValidator {
+            +{static} Color validateColor(Console console)
+        }
+        class CoordinatesValidator {
+            +{static} Coordinates validateCoordinates(Console console)
+        }
+        class DescriptionValidator {
+            +{static} String validateDescription(Console console)
+        }
+        class DragonCaveValidator {
+            +{static} DragonCave validateDragonCave(Console console)
+        }
+        class NameValidator {
+            +{static} Dragon validateDragonName(Console console)
+        }
+        class WingspanValidator {
+            +{static} double validateWingspan
+        }
+    }
+    enum Color {
+    GREEN
+    BLUE
+    YELLOW
+    BROWN
+    +{static} String getNames()
+    +{static} Color getMaxValue(Set<Color> colors)
+    +{static} boolean validateColor(String value)
+    }
+    class Coordinates {
+        -Integer x
+        -Float y
+        +Coordinates()
+        +void setX(Integer x)
+        +void setY(Float y)
+        +Integer getX()
+        +Float getY()
+        +String toString()
+        +int compareTo(Coordinates coordinates)
+    }
+    class DragonCave {
+        -long numberOfTreasures
+        +DragonCave(long numberOfTreasures)
+        +void setNumberOfTreasures(long numberOfTreasures)
+        +long getNumberOfTreasures()
+        +String toString()
+        +int compareTo(DragonCave cave)
+    }
+    class IdGenerator {
+        -{static} Random RANDOOM
+        -{static} int ID_BOUND
+        -{static} Set<Integer> ids
+        +{static} int generateUniqueRandomId()
+    }
+    class Dragon {
+        -int id
+        -String name
+        -Coordinates coordinates
+        -LocalDateTime creationDate
+        -long age
+        -String description
+        -double wingspan
+        -Color color
+        -DragonCave cave
+        +Dragon(int id, String name, Coordinates coordinates, LocalDateTime creationDate, long age, String description, double wingspan, Color color, DragonCave cave)
+        +String toString()
+        +boolean equals(Object o)
+        +String toXml()
+        +int compareTo(Dragon dragon)
+        +{static} boolean validateArguments(String[] args)
+    }
+}
+package managers {
+    class CommandManager {
+        -Console console
+        -Map<String, BaseCommand> commandList
+        +CommandManager()
+        +Map<String, BaseCommand> getCommandList()
+        +ExecutionCode executeCommand(String[] userCommand)
+    }
+    class DragonManager {
+        -{static} DragonManager singletonPattern
+        -ArrayList<Dragon> collection = new ArrayList<>()
+        -LocalDateTime lastInitTime
+        -LocalDateTime lastSaveTime
+        +{static} DragonManager getInstance()
+        +ArrayList<Dragon> getCollection()
+        +void setCollection(ArrayList<Dragon> dragons)
+        +void setLastInitTime()
+        +void setLastSaveTime()
+        +LocalDateTime getLastInitTime()
+        +LocalDateTime getLastSaveTime()
+        +int size()
+        +void addElement(Dragon dragon)
+        +void update()
+        +void removeById(int id)
+        +int findById(int id)
+        +void clear()
+        +void remove(int index)
+        +Dragon get(int index)
+    }
+}
+class Exception {}
+package exceptions {
+    class NoEnoughRootsException
+    class ObjectNotFoundException
+    class RecursionLimitException
+    class WrongArgumentException
+    class WrongInputException
+}
+Exception <|-- NoEnoughRootsException
+Exception <|-- ObjectNotFoundException
+Exception <|-- RecursionLimitException
+Exception <|-- WrongArgumentException
+Exception <|-- WrongInputException
+
+package commands {
+    class BaseCommand {
+        -String name
+        -String description
+        +BaseCommand(String name, String description)
+        +String getName()
+        +String getDescription()
+        +boolean execute(String[] args)
+        +String toString()
+        +boolean hashCode()
+    }
+    interface Descripable {
+        +String getName()
+        +String getDescription()
+    }
+    interface Executable {
+        +boolean execute(String[] args)
+    }
+    class Add {
+        -Console console
+        +Add(Console console)
+        +boolean execute(String[] args)
+    }
+    class AddIfMax {
+        -Console console
+        +AddIfMax(Console console)
+        +boolean execute(String[] args)
+    }
+    class Clear {
+        -Console console
+        +Clear(Console console)
+        +boolean execute(String[] args)
+    }
+    class ExecuteScript {
+        -Console console
+        -CommandManager commandManager
+        -{static} Stack<File> stack
+        +ExecuteScript(Console console, CommandManager commandManager)
+        +boolean execute(String[] args)
+        -String getNextCommand(BufferedInputStream bufferedInputStream)
+    }
+    class Exit {
+        -Console console
+        +Exit(Console console)
+        +boolean execute(String[] args)
+    }
+    class Help {
+        -CommandManager commandManager
+        -Console console
+        +Help(Console console, CommandManager commandManager)
+        +boolean execute(String[] args)
+    }
+    class History {
+        -Console console
+        -{static} int HISTORY_SIZE
+        -{static} LinkedList<String> commandQueue
+        +History(Console console)
+        +boolean execute(String[] args)
+        +{static} void addCommandToHistory(String command)
+    }
+    class Info {
+        -Console console
+        +Info(Console console)
+        +boolean execute(String[] args)
+    }
+    class MaxByColor {
+        -Console console
+        +MaxByColor(Console console)
+        +boolean execute(String[] args)
+    }
+    class PrintDescending {
+        -Console console
+        +PrintDescending(Console console)
+        +boolean execute(String[] args)
+    }
+    class RemoveAnyByWingspan {
+        -Console console
+        +RemoveAnyByWingspan(Console console)
+        +boolean execute(String[] args)
+    }
+    class RemoveById {
+        -Console console
+        +RemoveById(Console console)
+        +boolean execute(String[] args)
+    }
+    class RemoveLast {
+        -Console console
+        +RemoveLast(Console console)
+        +boolean execute(String[] args)
+    }
+    class Save {
+        -Console console
+        +Save(Console console)
+        +boolean execute(String[] args)
+    }
+    class Show {
+        -Console console
+        +Show(Console console)
+        +boolean execute(String[] args)
+    }
+    class Update {
+        -Console console
+        +Update(Console console)
+        +boolean execute(String[] args)
+    }
+
+}
+Executable <|.. BaseCommand
+Descripable <|.. BaseCommand
+BaseCommand <|-- Add
+BaseCommand <|-- AddIfMax
+BaseCommand <|-- Clear
+BaseCommand <|-- ExecuteScript
+BaseCommand <|-- Exit
+BaseCommand <|-- Help
+BaseCommand <|-- History
+BaseCommand <|-- Info
+BaseCommand <|-- MaxByColor
+BaseCommand <|-- PrintDescending
+BaseCommand <|-- RemoveAnyByWingspan
+BaseCommand <|-- RemoveById
+BaseCommand <|-- RemoveLast
+BaseCommand <|-- Save
+BaseCommand <|-- Show
+BaseCommand <|-- Update
+@enduml

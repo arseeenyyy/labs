@@ -1,0 +1,3 @@
+execute_script src/data2.txt
+info
+execute_script src/data.txt

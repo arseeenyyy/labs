@@ -1,0 +1,37 @@
+package commands;
+
+import exceptions.WrongArgumentException;
+import managers.DragonManager;
+import utility.Console;
+/**
+ * Команда 'print_descending'. Выводит элементы коллекции в обратном порядке.
+*/
+public class PrintDescending extends BaseCommand {
+    private final Console console;
+    public PrintDescending(Console console) {
+        super("print_descending", "outputs collection elements in reverse order");
+        this.console = console;
+    }
+    /**
+     * Выполняет команду
+     * @return boolean Успешность выполнения команды
+     */
+    @Override
+    public boolean execute(String[] args) {
+        try {
+            if (!args[1].isEmpty()) throw new WrongArgumentException();
+            if (DragonManager.getInstance().size() == 0) {
+                console.println("collection is empty\nthere's nothing to output");
+                return true;
+            }
+            for (int i = DragonManager.getInstance().size() - 1; i >= 0; i --) {
+                console.println(DragonManager.getInstance().get(i));
+            }
+            return true;
+        }catch (WrongArgumentException exception) {
+            console.printError("command '" + getName() + "' has no arguments!");
+        }
+        return false;
+    }
+
+}

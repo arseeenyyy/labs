@@ -1,0 +1,142 @@
+@startuml
+package lab4{
+    package enums{
+        +enum Guns{
+            KNIFE
+            PISTOL
+            DAGGER
+            RIFLE
+            -final String gun
+            -String getGun()
+            +{static} Guns getRandomGun()
+        }
+        +enum RandomThings {
+            CHAIR
+            TABLE
+            LAPTOP
+            IPHONE
+            CUCUMBER
+            BOTTLE
+            SHOVEL
+            FORK
+            PIPE
+            SPOON
+            KIRIESHKA
+            -String name
+            -RandomThings(String name)
+            +String getName()
+            +{static} RandomThings getRandomThings()
+        }
+        +enum Transport {
+            CAR
+            BUS
+            HELICOPTER
+            PLANE
+            TRAIN
+            BOAT
+            SUBMARINE
+            -String transport
+            -Transport(String transport)
+            +String getTransport()
+            +{static} Transport getRandomTransport()
+        }
+    }
+    package names {
+        +enum Name {
+            -String name
+            -Name(String name)
+            +String getName()
+            +{static} Name getRandomName()
+        }
+    }
+    package lifelessobj {
+        +class Noise {
+            +{static} int noiseLevel
+            +{static} void levelOfNoise(int number)
+            +{static} void addjustNoiseLevel()
+            +{static} void resetNoiseLevel(int number)
+        }
+    }
+    +interface Fightable {
+        +void fight(Human human, double chance)
+    }
+    +interface Drownable {
+        +void drown(Human human)
+    }
+    +interface Flopable {
+        +void flop(Human human, double chance)
+    }
+    +interface Failable {
+        +void fail()
+    }
+    +interface Fallable {
+        +void fall()
+    }
+    +interface Persuitable {
+        +void persuit(Human human, double chanceee)
+    }
+    +interface Shootable {
+        +void shoot(Human human, double chance)
+    }
+    +interface Invokable {
+        +void invoke()
+    }
+    +abstract class Human implements Drownable, Failable, Fallable, Flopable, Persuitable, Shootable, Fightable {
+        -String hasgun
+        -String name
+        +Human()
+        +String getName()
+        +String getHasGun()
+    }
+    +class Policeman extends Human {
+        +Policeman()
+        +void fail()
+        +void fall()
+        +void fight(Human human, double chance)
+        +void drown(Human human)
+        +void flop(Human human, double chance)
+        +void persuit(Human human, double chance)
+        +Strint toString()
+        +boolean equals(Object obj)
+        +int hashCode()
+    }
+    +class Suspect extends Human {
+        -boolean isMasked
+        +Suspect()
+        +String toString()
+        +void fail()
+        +void fall()
+        +void fight(Human human, double chance)
+        +void drown(Human human)
+        +void flop(Human human, double chance)
+        +void persuit(Human human, double chance)
+        +String toString()
+        +boolean equals(Object obj)
+        +int hashCode()
+    }
+    +class Shortie {
+        +{static} void takeAseat()
+        +{static} void scream()
+        +{static} void sleep()
+        +{static} void hear()
+        +{static} Invokable inv = new Invokable() {void invoke() {class Breakfast{}}}
+        -{static} Eatery{
+        String name
+        Eatery(){}
+        }
+
+    }
+    package exception {
+       class EmptyNameException{
+            +EmptyNameException()
+            +EmptyNameException()
+       }
+       class NumberException {
+            +NumberException()
+            +NumberException()
+       }
+    }
+}
+
+
+@enduml

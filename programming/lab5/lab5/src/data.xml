@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection>
+	<dragons>
+		<dragon id="260" name="toothless" x="67851" y="9999.999" creationDate="2024-03-20T00:03:09.601180533" age="-120" description="strongest dragon" wingspan="56.0" color="BROWN" cave="999" />
+	</dragons>
+</collection>
